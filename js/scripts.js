@@ -18,10 +18,8 @@ $(document).ready(function(){
     
     fetchVenues("");
     
-    $(".btn").on("click", function(){
+    $("button").on("click", function(){
         var type = $(this).data("type");
-        $(".btn").removeClass("active");
-        $(this).addClass("active");
         fetchVenues(type);
     });
     
@@ -50,10 +48,11 @@ $(document).ready(function(){
                             if (typeof venue.location.address == 'undefined') {
                                 continue;
                             }
-                            var response = 
-                                    '<h2>' + venue.name + '</h2>'+
-                                    '<div>' + venue.location.address + '</div>'+
-                                    '<hr/>';
+                            var response = '<div class="col-xs-6">'+
+                                        '<h2>' + venue.name + '</h2>'+
+                                        '<div>' + venue.location.address + '</div>'+
+                                        '<div><a href="' + venue.url + '">'+venue.url+'</a></div>'+
+                                    '</div>';
                             
                             $("#content").append(response);
                         }
