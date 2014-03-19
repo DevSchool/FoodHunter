@@ -48,11 +48,11 @@ $(document).ready(function(){
                             if (typeof venue.location.address == 'undefined') {
                                 continue;
                             }
-                            var response = '<div class="col-xs-6">'+
-                                        '<h2>' + venue.name + '</h2>'+
-                                        '<div>' + venue.location.address + '</div>'+
-                                        '<div><a href="' + venue.url + '">'+venue.url+'</a></div>'+
-                                    '</div>';
+                            var response = '<div class="col-xs-4" style="">'+
+                                                '<h2>' + venue.name + '</h2>'+
+                                                '<div>' + venue.location.address + '</div>'+
+                                                '<div><a href="' + venue.url + '">'+venue.url+'</a></div>'+
+                                            '</div>';
                             
                             $("#content").append(response);
                         }
