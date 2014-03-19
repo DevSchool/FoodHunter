@@ -1,0 +1,14 @@
+body {
+    background: black;
+    color: white;
+}
+
+.jumbotron {
+    background: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.item {
+    border: 1px solid white;
+}
