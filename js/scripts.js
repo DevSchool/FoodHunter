@@ -7,34 +7,61 @@ $(document).ready(function(){
     //Foursqaure API version
     var FQ_API_VERSION = '20130815';
     
+    //Foursquare API Food category ID
+    var FQ_FOOD_CATEGORY_ID = '4d4b7105d754a06374d81259';
+    
     /**
      * Foursquare API venues search base URL
      * More info here: https://developer.foursquare.com/start/search
      */
-    var FQ_BASE_URL = 'https://developer.foursquare.com/start/search';
+    var FQ_BASE_URL = 'https://api.foursquare.com/v2/venues/search';
     
-    //Check if location services are available
-    if (navigator.geolocation) {
-        
-        //Determine our location
-        navigator.geolocation.getCurrentPosition(function(position){
-            alert(position);
-            //Call API
-            $.getJSON(FQ_BASE_URL, {
-                "client_id": FQ_CLIENT_ID,
-                "client_secret": FQ_CLIENT_SECRET,
-                "v": FQ_API_VERSION,
-                "ll": position.coords.latitude+","+position.coords.longitude,
-                "query": ""
-            }, function(response){
-                alert(response);
-                 $("#content").html(response);
+    fetchVenues("");
+    
+    $(".btn").on("click", function(){
+        var type = $(this).data("type");
+        $(".btn").removeClass("active");
+        $(this).addClass("active");
+        fetchVenues(type);
+    });
+    
+    function fetchVenues(query) {
+        //Check if location services are available
+        if (navigator.geolocation) {
+
+            //Determine our location
+            navigator.geolocation.getCurrentPosition(function(position){
+                //Call API
+                $.getJSON(FQ_BASE_URL, {
+                    "client_id": FQ_CLIENT_ID,
+                    "client_secret": FQ_CLIENT_SECRET,
+                    "v": FQ_API_VERSION,
+                    "radius": "1000",
+                    "ll": position.coords.latitude+","+position.coords.longitude,
+                    "categoryId": FQ_FOOD_CATEGORY_ID, //https://api.foursquare.com/v2/venues/categories
+                    "query": query
+                }, function(data){
+                    if (data.meta.code!==200) {
+                        alert("Error fetching venues");
+                    } else {
+                        $("#content").empty();
+                        for (var i=0; i<data.response.venues.length; i++) {
+                            var venue = data.response.venues[i];
+                            if (typeof venue.location.address == 'undefined') {
+                                continue;
+                            }
+                            var response = 
+                                    '<h2>' + venue.name + '</h2>'+
+                                    '<div>' + venue.location.address + '</div>'+
+                                    '<hr/>';
+                            
+                            $("#content").append(response);
+                        }
+                    }
+                });
             });
-            
-        });
-        
-    } else {
-        alert("Cannot determine current location");
+        } else {
+            alert("Cannot determine current location");
+        }
     }
-    
 });
