@@ -18,6 +18,7 @@ $(document).ready(function(){
         
         //Determine our location
         navigator.geolocation.getCurrentPosition(function(position){
+            alert(position);
             //Call API
             $.getJSON(FQ_BASE_URL, {
                 "client_id": FQ_CLIENT_ID,
@@ -26,6 +27,7 @@ $(document).ready(function(){
                 "ll": position.coords.latitude+","+position.coords.longitude,
                 "query": ""
             }, function(response){
+                alert(response);
                  $("#content").html(response);
             });
             
