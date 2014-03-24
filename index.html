@@ -5,10 +5,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <div id="header"></div>
         <div class="container-fluid">
-            <h1>FoodHunter</h1>
+            <div class="jumbotron">
+                <h1>FoodHunter app!</h1>
+                <p>This is a demo app for DevSchool's web development crash course.</p>
+            </div>
             <div class="row">
                 <button type="button" class="btn btn-primary btn-lg active" data-type="">All venues</button>
                 <button type="button" class="btn btn-primary btn-lg" data-type="mexican">Mexican</button>
@@ -16,6 +21,7 @@
                 <button type="button" class="btn btn-primary btn-lg" data-type="chinese">Chinese</button>
                 <button type="button" class="btn btn-primary btn-lg" data-type="sushi">Sushi</button>
             </div>
+            <br />
             <div class="row" id="content"></div>
         </div>
         
