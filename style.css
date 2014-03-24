@@ -1,0 +1,26 @@
+#first_div {
+   color: red;
+   font-size: 35px;
+   border-right: 3px solid yellow;
+   border-left: 3px solid yellow;
+   font-family: "Courier New";
+   text-align: right;
+}
+
+.our_first_class {
+    color: blue;
+    background: black;
+}
+
+button {
+    
+}
+
+button.class_of_the_button {
+    
+}
+
+div p {
+    
+}
+
