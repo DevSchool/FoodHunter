@@ -48,7 +48,7 @@ $(document).ready(function(){
                             if (typeof venue.location.address == 'undefined') {
                                 continue;
                             }
-                            var response = '<div class="item col-xs-4" >'+
+                            var response = '<div class="item col-md-4" >'+
                                                 '<h2>' + venue.name + '</h2>'+
                                                 '<div>' + venue.location.address + '</div>'+
                                                 '<div>' + venue.contact.phone + '</div>'+

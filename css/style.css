@@ -1,12 +1,17 @@
 body {
-    background: black;
+    background: url(http://25.media.tumblr.com/665f306a0a5a5eae6e0c91f33ce74695/tumblr_mzzqv2P7MY1st5lhmo1_1280.jpg) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     color: white;
 }
 
 .jumbotron {
-    background: black;
+    background: transparent;
     color: white;
     border: 1px solid white;
+    border-top: none;
 }
 
 .item {
